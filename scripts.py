@@ -39,29 +39,24 @@ COMENDATIONS = [
 
 
 def fix_marks(schoolkid):
-    schoolkid_marks = Mark.objects.filter(schoolkid=schoolkid, points__in=[2, 3])
-    for schoolkid_mark in schoolkid_marks:
-        schoolkid_mark.points = randint(4, 5)
-        schoolkid_mark.save()
+    bad_marks = Mark.objects.filter(schoolkid=schoolkid, points__in=[2, 3])
+    if bad_marks:
+        bad_marks.update(points=randint(4, 5))
+
 
 def remove_chastisement(schoolkid):
     Chastisement.objects.filter(schoolkid=schoolkid).delete()
     
 
 def create_commendation(schoolkid, title):
-    subject = Subject.objects.filter(title=title, year_of_study=schoolkid.year_of_study)
-    schoolkid_lessons = Lesson.objects.filter(year_of_study=schoolkid.year_of_study, group_letter=schoolkid.group_letter, subject=subject[0])
-    for lesson in schoolkid_lessons:
-        Commendation.objects.create(
+    subject = Subject.objects.get(title=title, year_of_study=schoolkid.year_of_study)
+    schoolkid_lesson = Lesson.objects.filter(
+        year_of_study=schoolkid.year_of_study, 
+        group_letter=schoolkid.group_letter, 
+        subject=subject).order_by("-date").first()
+    Commendation.objects.create(
             schoolkid=schoolkid,
-            teacher=lesson.teacher,
-            subject=lesson.subject,
-            created=lesson.date,
-            text=choise(COMENDATIONS))
-
-
-if __name__ == "__main__":
-    schoolkid = Schoolkid.objects.get(full_name__contains="Фролов Иван")
-    fix_marks(schoolkid)
-    remove_chastisement(schoolkid)
-    create_commendation(schoolkid, "Математика")
+            teacher=schoolkid_lesson.teacher,
+            subject=schoolkid_lesson.subject,
+            created=schoolkid_lesson.date,
+            text=choice(COMENDATIONS))
