@@ -11,7 +11,7 @@ ___
 * [Пример использования](https://github.com/Artuom4ik/hacked_electronic_daybook#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%B0)
 * [Описание каждой функции](https://github.com/Artuom4ik/hacked_electronic_daybook#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BA%D0%B0%D0%B6%D0%B4%D0%BE%D0%B9-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8)
 ___
->### Для запуска программы требуется:
+### Для запуска программы требуется:
  * Скачать [Python](https://www.python.org/) версии 3.1 или выше.
  * Операционная система macOS, linux, windows 7 или выше.
 ___
