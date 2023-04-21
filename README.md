@@ -19,12 +19,22 @@ ___
 * Запуск Django Shell: 
     * Открываем консоль GitBash либо PowerShell.
     * Записываем в консоль команду для запуска Django Shell:
-    ```python manage.py shell```
+    ```
+    python manage.py shell
+    ```
 * В консоль прописываем команды для импортирования всех нужных модулей:
-    ```from datacenter.models import *```
-    ```from random import randint```
+```
+from datacenter.models import *
+```
+```
+from random import randint
+```
 * В консоль записываем команду:
-```schoolkid = Schoolkid.objects.get(full_name__contains="Фамилия Имя")```
+
+```
+schoolkid = Schoolkid.objects.get(full_name__contains="Фамилия Имя")
+```
+
 * Выбираем нужную функцию.
 * Копируем её в консоль.
 * В консоль пишем команду для запуска функции.
@@ -32,7 +42,8 @@ ___
 ### Описание каждой функции:
 * ```fix_marks()``` - изменяет плохие отметки на хорошие.
 * ```remove_chastisement()``` - удаляет замечания в электронном дневнике.
-* ```create_commendation()``` - добавляет похвалу по заданному предмету за последнее пресутствие на нём.
+* ```create_commendation(schoolkid, title)``` - добавляет похвалу по заданному предмету за последнее пресутствие на нём.
+    * ```title``` - название предмета. Писать с зоглавной буквы.
 ___
 ### Пример работы скрипта:
 #### До
